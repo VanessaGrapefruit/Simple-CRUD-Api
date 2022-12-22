@@ -1,6 +1,7 @@
 import { routePropertyKey } from "../constants/routes-constants";
 import { HttpMethod } from "../types/http-method";
 import { RouteDefinition } from '../types/route-definition';
+import { replaceRouteParams } from '../constants/replace-route-params';
 
 export const Route = (path: string, requestMethod: HttpMethod): MethodDecorator => {
 	return (target, propertyKey) => {
@@ -8,7 +9,7 @@ export const Route = (path: string, requestMethod: HttpMethod): MethodDecorator 
 
 		routes.push({
 			requestMethod,
-			path,
+			path: replaceRouteParams(path),
 			methodName: propertyKey as string
 		});
 
