@@ -1,4 +1,3 @@
-import { IncomingMessage, ServerResponse } from "http";
 import { BaseController } from "../controllers/base-controller";
 import { RouteDefinition } from "../types/route-definition";
 import { prefixPropertyKey, routePropertyKey } from "./routes-constants";
@@ -38,7 +37,7 @@ export function registerControllers<T extends new () => BaseController>(controll
 			return handler && (await handler(request, param));
 		} else {
 			response.statusCode = 404;
-			return { error: 'Route is not specefied' };
+			return { error: 'Such url is not specified' };
 		}
 	}
 }

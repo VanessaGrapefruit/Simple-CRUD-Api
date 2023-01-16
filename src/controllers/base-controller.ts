@@ -1,6 +1,5 @@
-import { LoggerService } from "../services/logger-service";
 import { Request, Response } from "../types/request-listener-types";
-import { uuidRegex } from '../constants/uuid-regex';
+import { HttpError } from '../types/http-error';
 
 export class BaseController {
 	protected response!: Response;
@@ -9,8 +8,8 @@ export class BaseController {
 		this.response.statusCode = statusCode;
 	}
 
-	protected internalError(error: unknown): object {
-		LoggerService.error(error);
+	protected internalError(error: unknown): HttpError {
+		console.error(error);
 		this.setStatus(500);
 		if (error instanceof Error) {
 			return { description: error.message, callStack: error.stack };
@@ -19,21 +18,17 @@ export class BaseController {
 		}
 	}
 
-	protected badRequest(description: string): object {
+	protected badRequest(description: string): HttpError {
 		this.setStatus(400);
 		return { description };
 	}
 
-	protected notFound(description: string): object {
+	protected notFound(description: string): HttpError {
 		this.setStatus(404);
 		return { description };
 	}
 
-	protected isIdValid(id: string): boolean {
-		return uuidRegex.test(id);
-	}
-
-	protected async getRequestBody(request: Request): Promise<string> {
+	protected async getRequestBodyString(request: Request): Promise<string> {
 		return new Promise((resolve, reject) => {
 			request.on('error', (error) => {
 				reject(error);

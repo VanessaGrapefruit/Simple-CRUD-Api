@@ -5,8 +5,10 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon ./src/index.ts",
-    "start:prod": "npx tsc && node ./build/index.js"
+    "start:dev": "nodemon ./src/index.ts --dev",
+    "start:prod": "npx tsc && node ./build/index.js",
+    "start:multi:dev": "nodemon ./src/index.ts --dev --multi",
+    "start:multi": "npx tsc && node ./build/index.js --multi"
   },
   "repository": {
     "type": "git",
