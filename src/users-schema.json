@@ -1,0 +1,20 @@
+[
+    {
+        "id": "c50e6c39-c560-4c0e-bd50-31f3494e7f44",
+        "username": "Aliaksei Rachkouski",
+        "age": 21,
+        "hobbies": ["Games","Music"]
+    },
+    {
+        "id": "6df7ff40-1542-48dd-9316-c9bc542bab17",
+        "username": "Diana Lesyak",
+        "age": 20,
+        "hobbies": ["Phycology","Music"]
+    },
+    {
+        "id": "673693d3-1918-4c2e-9a30-583e06a1f2eb",
+        "username": "Ilya Lutik",
+        "age": 18,
+        "hobbies": ["Games", "Music"]
+    }
+]
